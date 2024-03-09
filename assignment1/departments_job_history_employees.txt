@@ -1,0 +1,37 @@
+        ***** NOT EXECUTED ******
+
+CREATE TABLE EMPLOYEES (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    phone_number VARCHAR(50),
+    hire_date DATE,
+    job_id VARCHAR(15),
+    salary DOUBLE,
+    commission_pct DOUBLE,
+    manager_id INT,
+    department_id INT,
+    FOREIGN KEY (job_id) REFERENCES JOBS(job_id),
+    FOREIGN KEY (manager_id) REFERENCES EMPLOYEES(employee_id),
+    FOREIGN KEY (department_id) REFERENCES DEPARTMENTS(department_id)
+);
+
+CREATE TABLE DEPARTMENTS (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50),
+    manager_id INT,
+    location_id INT,
+    FOREIGN KEY (manager_id) REFERENCES EMPLOYEES(employee_id),
+    FOREIGN KEY (location_id) REFERENCES LOCATIONS(location_id)
+);
+CREATE TABLE JOB_HISTORY (
+    employee_id INT,
+    start_date DATE,
+    end_date DATE,
+    job_id VARCHAR(15),
+    department_id INT,
+    PRIMARY KEY (employee_id, start_date),
+    FOREIGN KEY (job_id) REFERENCES JOBS(job_id),
+    FOREIGN KEY (department_id) REFERENCES DEPARTMENTS(department_id)
+);
