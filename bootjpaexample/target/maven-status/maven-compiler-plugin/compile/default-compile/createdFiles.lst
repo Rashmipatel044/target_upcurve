@@ -1,0 +1,3 @@
+com\jpa\test\bootjpaexample\BootjpaexampleApplication.class
+com\jpa\test\dao\UserRepository.class
+com\jpa\test\entities\User.class
